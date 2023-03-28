@@ -97,12 +97,6 @@ CREATE_WEB_APPLICATION_ASSET_MUTATION = """mutation newWebApplicationAsset($asse
                        }
                        }"""
 
-CREATE_WEB_API_ASSET_MUTATION = """mutation newWebAPIAsset($assetInput: WebAPIAssetInput!) {
-                         newWebAPIAsset(assetInput: $assetInput) {
-                           id
-                           name
-                       }
-                       }"""
 
 CREATE_GENERIC_ASSET_MUTATION = """mutation newGenericAsset($assetInput: GenericAssetInput!) {
                          newGenericAsset(assetInput: $assetInput) {
@@ -124,8 +118,6 @@ DELETE_ASSET_MUTATION = """mutation deleteAsset($id: String!){
                        }"""
 
 CREATE_WEB_APPLICATION_ASSET_NAME = "newWebApplicationAsset"
-
-CREATE_WEB_API_ASSET_NAME = "newWebAPIAsset"
 
 CREATE_GENERIC_ASSET_NAME = "newGenericAsset"
 # ----------ASSETS queries----------
@@ -270,13 +262,6 @@ CREATE_WEB_APPLICATION_PRACTICE_MUTATION = """mutation newWebApplicationPractice
                        }
                        }"""
 
-CREATE_WEB_API_PRACTICE_MUTATION = """mutation newWebAPIPractice($ownerId: ID, $modes: [PracticeModeInput], $practiceInput: WebAPIPracticeInput){
-                            newWebAPIPractice(ownerId: $ownerId, modes: $modes, practiceInput: $practiceInput){
-                              id
-                              name
-                       }
-                       }"""
-
 UPDATE_WEB_APPLICATION_PRACTICE_MUTATION = """mutation updateWebApplicationPractice($practiceInput: WebApplicationPracticeUpdateInput!, $ownerId : ID,  $id: ID!) {
                          updateWebApplicationPractice(practiceInput: $practiceInput, ownerId: $ownerId, id: $id) 
                        }"""
@@ -284,8 +269,6 @@ UPDATE_WEB_APPLICATION_PRACTICE_MUTATION = """mutation updateWebApplicationPract
 PRACTICE_BASE_NAME = "WAAP Gem Best Practice"
 
 CREATE_WEB_APPLICATION_PRACTICE_MUTATION_NAME = "newWebApplicationPractice"
-
-CREATE_WEB_API_PRACTICE_MUTATION_NAME = "newWebAPIPractice"
 
 DELETE_PRACTICE_MUTATION = """mutation deletePractice($id: ID!){
                             deletePractice(id: $id)

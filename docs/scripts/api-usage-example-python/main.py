@@ -41,7 +41,6 @@ def main():
             "name": profile_name,
             "onlyDefinedApplications": True
         })
-        print("Creating Web API Asset and components\n")
 
         modes = [
             {
@@ -57,44 +56,9 @@ def main():
             },
             {
                 "mode": "AccordingToPractice",
-                "subPractice": "APIAttacks"
+                "subPractice": "WebAttacks"
             }
         ]
-        practice_name = "{} {}".format("ACME Web API Practice", generate_full_random_hex())
-        file = open("D:\git\\test-mgmt-versions-api\OpenAPISchema.yml", "r")
-        file_content = file.read()
-        message_bytes = file_content.encode('ascii')
-        base64_bytes = base64.b64encode(message_bytes)
-        header64 = "OpenAPISchema.yml;$$:$$;data:application/octet-stream;base64," + base64_bytes.decode('ascii')
-        web_api_practice_id = mgmt_api.create_web_api_practice(modes, {
-            "name": practice_name,
-            "visibility": "Shared",
-            "SchemaValidation": {"OasSchema": header64}
-        })
-
-        web_api_practice_obj = {
-            "practiceId": web_api_practice_id,
-            "triggers": [trigger_id]
-        }
-
-        web_api_asset_name = "{} {}".format("Web API", generate_random_hex())
-        web_api_asset_url = "https://api.acme-{}.checkpoint.com".format(generate_full_random_hex())
-        asset_input = {
-            "name": web_api_asset_name,
-            "practices": [web_api_practice_obj],
-            "behaviors": [
-                behavior_id
-            ],
-            "profiles": [
-                profile_id
-            ],
-            "URLs": [
-                web_api_asset_url
-            ],
-            "upstreamURL": "http://1.2.3.4",
-            "sourceIdentifiers": [{"sourceIdentifier": "HeaderKey", "values": ["users"]}]
-        }
-        web_api_asset_id = mgmt_api.create_web_api_asset(asset_input)
 
         print("Creating Web Application Asset and components\n")
 
@@ -152,9 +116,7 @@ def main():
         if discard_objects:
             print("")
             # print("Starting Deletion")
-            # mgmt_api.delete_asset(asset_id=web_api_asset_id)
             # mgmt_api.delete_asset(asset_id=web_application_asset_id)
-            # mgmt_api.delete_practice(practice_id=web_api_practice_id)
             # mgmt_api.delete_practice(practice_id=web_application_practice_id)
             # mgmt_api.delete_trigger(trigger_id=trigger_id)
             # mgmt_api.delete_profile(profile_id=profile_id)

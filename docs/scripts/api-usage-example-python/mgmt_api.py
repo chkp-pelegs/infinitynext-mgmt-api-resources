@@ -82,26 +82,6 @@ def create_web_application_asset(asset_input):
     print("Creating Web Application Asset", asset_res)
     return asset_id
 
-def create_web_api_asset(asset_input):
-    """
-    Executes a "create Web API asset" mutation with graphql-client
-    :param asset_input: the asset input
-    :return: The new asset id
-    """
-
-    asset_variables = {
-        "assetInput": asset_input
-    }
-
-    asset_res = perform_infinity_request(query_or_mutation=CREATE_WEB_API_ASSET_MUTATION,
-                                    version=1,
-                                    variables=asset_variables,
-                                    description="Creating Asset")
-    asset_id = asset_res['data'][CREATE_WEB_API_ASSET_NAME]['id']
-
-    print("Creating Web API Asset", asset_res)
-    return asset_id
-
 def updateWebApplicationSourceIdentifierValues(id):
     """
     Executes a "update Web Application asset" mutation with graphql-client
@@ -300,24 +280,6 @@ def create_web_application_practice(modes, practice_input):
     print("Creating Web Application Practice")
     return practice_id
 
-
-def create_web_api_practice(modes, practice_input):
-    """
-    Executes a "create web api practice" mutation with graphql-client
-    :param modes: sub practices modes
-    :param practice_input: the practice input
-    :return: The new practice id
-    """
-    practice_variables = {
-        "modes": modes,
-        "practiceInput": practice_input
-    }
-    practice_res = perform_infinity_request(query_or_mutation=CREATE_WEB_API_PRACTICE_MUTATION,
-                                       variables=practice_variables,
-                                       description="Creating Practice")
-    practice_id = practice_res['data'][CREATE_WEB_API_PRACTICE_MUTATION_NAME]['id']
-    print("Creating Web API Practice", practice_res, "\n")
-    return practice_id
 
 def update_web_application_practice(practiceInput, id):
     """
